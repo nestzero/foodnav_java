@@ -1,9 +1,14 @@
+#Springboot 所有的配置类,都有一个自动配置类
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/foot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: root
     password: z4841056
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 server:
   port: 9090

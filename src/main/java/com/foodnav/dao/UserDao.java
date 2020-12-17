@@ -30,6 +30,6 @@ public interface UserDao extends BaseMapper<User> {
     @Select("select * from user where uid=#{uid}")
     public User getUpdateUser(int uid);
 
-    @Update("update user set password=#{password},realname=#{realname} where uid=#{uid}")
+    @Update("update user u set u.password=#{password},u.realname=#{realname} where uid=#{uid}")
     public int editUser(User user);
 }

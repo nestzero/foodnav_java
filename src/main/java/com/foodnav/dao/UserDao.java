@@ -24,6 +24,12 @@ public interface UserDao extends BaseMapper<User> {
             "values(#{username},#{password},#{realname},#{root})")
     public int addUser(User user);
 
+    @Select("select * from user where username=#{username}")
+    public List<User> registerUser(@Param("username") String username);
+
+    @Select("select * from user where realname=#{realname}")
+    public List<User> checkUser(@Param("realname") String realname);
+
     @Delete("delete from user where uid=#{uid}")
     public int deleteUser(int uid);
 

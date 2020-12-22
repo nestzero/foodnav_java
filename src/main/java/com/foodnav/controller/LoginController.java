@@ -28,7 +28,7 @@ public class LoginController {
         }
 
         res.put("flag",flag);
-        res.put("user",user);
+        res.put("user",us);
         String res_json = JSON.toJSONString(res);
         return res_json;
     }

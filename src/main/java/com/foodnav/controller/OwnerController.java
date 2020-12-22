@@ -35,10 +35,44 @@ public class OwnerController {
         return res_json;
     }
 
+    @RequestMapping("/rankOwner")
+    public String getRankOwner(){
+        List<Owner> rankOwner=oDao.getRankOwner();
+        HashMap<String, Object> rs = new HashMap<>();
+
+        rs.put("data",rankOwner);
+
+        String rs_json = JSON.toJSONString(rs);
+
+        return rs_json;
+    }
+
     @RequestMapping("/addOwner")
     public String addOwner(@RequestBody Owner owner){
         int i = oDao.addOwner(owner);
         return i>0?"success":"error";
+    }
+
+    @RequestMapping("/registerOwner")
+    public String registerOwner(String realname){
+        String flag="success";
+        List<Owner> owners = oDao.registerOwner(realname);
+
+        if (owners.isEmpty()){
+            flag="error";
+        }
+        return  flag;
+    }
+
+    @RequestMapping("/ownerOr")
+    public String ownerOr(String realname){
+        String flag="error";
+        List<Owner> ownerList = oDao.ownerOr(realname);
+
+        if (ownerList.isEmpty()){
+            flag="success";
+        }
+        return  flag;
     }
 
     @RequestMapping("/deleteOwner")

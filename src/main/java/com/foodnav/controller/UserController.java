@@ -40,13 +40,35 @@ public class UserController {
         return i>0?"success":"error";
     }
 
+    @RequestMapping("/registerUser")
+    public String registerUser(String username){
+        String flag="error";
+        List<User> userList = uDao.registerUser(username);
+
+        if (userList.isEmpty()){
+            flag="success";
+        }
+        return flag;
+    }
+
+    @RequestMapping("/checkUser")
+    public String checkUser(String realname){
+        String flag="error";
+        List<User> userList = uDao.checkUser(realname);
+
+        if (userList.isEmpty()){
+            flag="success";
+        }
+        return flag;
+    }
+
     @RequestMapping("/deleteUser")
     public String deleteUser(int uid){
         int i = uDao.deleteUser(uid);
         return i>0?"success":"error";
     }
 
-    @RequestMapping("/getUpdate")
+    @RequestMapping("/getUpdateUser")
     public String getUpdateUser(int uid){
         User user = uDao.getUpdateUser(uid);
         String resJ = JSON.toJSONString(user);
